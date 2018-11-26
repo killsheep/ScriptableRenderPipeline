@@ -13,13 +13,33 @@ public class ShaderGraphParser
 {
     private const string _NodeNamePrefix = "\"fullName\": \"UnityEditor.ShaderGraph.";
 
-    [MenuItem("Tools/Count Nodes")]
-    private static void CountNodes()
+    // Combining each missing/contained node into a string would cause strings that are too long
+    // for Debug.Log to print, so I'll just give you three options instead.
+
+    [MenuItem("Tools/Node Counter/Count Nodes")]
+    private static void CountNoudes()
+    {
+        CountNodes(false, false);
+    }
+
+    [MenuItem("Tools/Node Counter/Count Nodes + List Missing")]
+    private static void CountNoudesListMissing()
+    {
+        CountNodes(true, false);
+    }
+
+    [MenuItem("Tools/Node Counter/Count Nodes + List All")]
+    private static void CountNoudesListAll()
+    {
+        CountNodes(true, true);
+    }
+
+    private static void CountNodes(bool listMissing, bool listContained)
     {
         string[] filePaths = GetShaderGraphFilePaths();
         Dictionary<string, int> nodeDict = CreateNodeDictionary();
 
-        Debug.Log("# of ShaderGraph files: " + filePaths.Length);
+        if (!listMissing && !listContained) Debug.Log("# of ShaderGraph files: " + filePaths.Length);
 
         foreach (string s in filePaths)
         {
@@ -48,25 +68,31 @@ public class ShaderGraphParser
             else containNodes.Add(item.Key);
         }
 
-        if (containNodes.Count > 0)
-        {
-            string containString = "Contaned Nodes ("+containNodes.Count+"):\n";
-            foreach (string s in containNodes)
-            {
-                containString += (s + ": " + nodeDict[s] +  "\n");
-            }
-            Debug.Log(containString);
-        }
-
         if (missingNodes.Count > 0)
         {
-            string missingString = "Missing Nodes ("+missingNodes.Count+"):\n";
-            missingNodes.Sort();
-            foreach (string s in missingNodes)
+            Debug.LogError("# of Missing Nodes: " + missingNodes.Count + " out of " + nodeDict.Count + "\n");
+
+            if (listMissing)
             {
-                missingString += (s + ",\n");
+                missingNodes.Sort();
+                foreach (string s in missingNodes)
+                {
+                    Debug.LogError("   " + s);
+                }
             }
-            Debug.LogError(missingString);
+        }
+
+        if (containNodes.Count > 0)
+        {
+            Debug.Log("# of Contaned Nodes " + containNodes.Count + " out of " + nodeDict.Count + "\n");
+            
+            if (listContained)
+            {
+                foreach (string s in containNodes)
+                {
+                    Debug.Log("   " + s + ": " + nodeDict[s]);
+                }
+            }
         }
     }
 
@@ -122,6 +148,9 @@ public class ShaderGraphParser
 
     // For testing if nodes are connected to the master node but currenlty I'm unsure how to convert
     // the the string path into the shader graph master node that DepthFirstCollectNodesFromNode needs.
+    // Likely unnecessary, as we can just be sure that all nodes are being used by looking at the shader
+    // graphs, and that still won't make sure that every shader graph is being used in the test scenes anyhow.
+    // But here is the start in case anyone wants to start.
     //private static void ReadConnectedNodesFromSGFile(Dictionary<string, int> nodeDict)
     //{
     //    // GetNodes<INode>().OfType<IMasterNode>().FirstOrDefault();
