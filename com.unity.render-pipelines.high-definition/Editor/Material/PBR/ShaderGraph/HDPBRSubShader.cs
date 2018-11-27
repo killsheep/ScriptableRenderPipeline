@@ -35,6 +35,7 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
                 "#pragma multi_compile _ DIRLIGHTMAP_COMBINED",
                 "#pragma multi_compile _ DYNAMICLIGHTMAP_ON",
                 "#pragma multi_compile _ SHADOWS_SHADOWMASK",
+                "#pragma multi_compile _ LIGHT_LAYERS",
             },
             Includes = new List<string>()
             {
