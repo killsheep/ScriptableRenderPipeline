@@ -98,7 +98,7 @@ public class ShaderGraphParser
 
     private static string[] GetShaderGraphFilePaths()
     {
-        return Directory.GetFiles(Application.dataPath + "/",
+        return Directory.GetFiles(Application.dataPath + "/Testing/IntegrationTests",
                                   "*ShaderGraph",
                                   SearchOption.AllDirectories);
     }
@@ -152,13 +152,13 @@ public class ShaderGraphParser
     // graphs, and that still won't make sure that every shader graph is being used in the test scenes anyhow.
     // But here is the start in case anyone wants to start.
     //private static void ReadConnectedNodesFromSGFile(Dictionary<string, int> nodeDict)
-    //{
-    //    // GetNodes<INode>().OfType<IMasterNode>().FirstOrDefault();
-    //    IShaderGraph isg;
+    // {
+    //     // GetNodes<INode>().OfType<IMasterNode>().FirstOrDefault();
+    //     IShaderGraph isg;
     //
-    //    IMasterNode imn = null;
-    //    var theNodes = ListPool<INode>.Get();
-    //    NodeUtils.DepthFirstCollectNodesFromNode(theNodes, imn);
-    //}
+    //     IMasterNode imn = null;
+    //     var theNodes = ListPool<INode>.Get();
+    //     NodeUtils.DepthFirstCollectNodesFromNode(theNodes, imn);
+    // }
 
 }
