@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - The foldouts in the Lightweight Asset inspector UI now remember their state.
+- Added missing meta file for GizmosRenderingPass.cs.
 
 ## [5.2.0] - 2018-11-27
 ### Added
