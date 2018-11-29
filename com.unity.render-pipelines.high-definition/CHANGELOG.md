@@ -6,8 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [5.3.0-preview] - 2018-11-xx
 
+### Fixed
+- Resolving a bug relative to the debug light volumes mode
+
 ### Changed
 - ColorPyramid compute shader passes is swapped to pixel shader passes on platforms where the later is faster (Nintendo Switch).
+- Removing the simple lightloop used by the simple lit shader
 
 ## [5.2.0-preview] - 2018-11-27
 
