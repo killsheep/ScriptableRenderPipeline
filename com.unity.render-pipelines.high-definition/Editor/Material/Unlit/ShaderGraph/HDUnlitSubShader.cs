@@ -155,8 +155,6 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
 
             OnGeneratePassImpl = (IMasterNode node, ref Pass pass) =>
             {
-                var masterNode = node as UnlitMasterNode;
-
                 int stencilWriteMaskMV = (int)HDRenderPipeline.StencilBitMask.ObjectVelocity;
                 int stencilRefMV = (int)HDRenderPipeline.StencilBitMask.ObjectVelocity;
 
@@ -355,6 +353,8 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
                 {
                     GenerateShaderPassUnlit(masterNode, m_PassDepthForwardOnly, mode, materialOptions, subShader, sourceAssetDependencyPaths);
                 }
+
+                GenerateShaderPassUnlit(masterNode, m_PassMotionVectors, mode, materialOptions, subShader, sourceAssetDependencyPaths);
 
                 GenerateShaderPassUnlit(masterNode, m_PassForwardOnly, mode, materialOptions, subShader, sourceAssetDependencyPaths);                
                 

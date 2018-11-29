@@ -216,6 +216,8 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
                 PBRMasterNode.AlphaThresholdSlotId
             },
 
+            RequiredFields = new List<string>()
+            {
                 "AttributesMesh.normalOS",
                 "AttributesMesh.tangentOS",     // Always present as we require it also in case of Variants lighting
                 "AttributesMesh.uv0",
@@ -231,6 +233,10 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
                 "FragInputs.texCoord2",
                 "FragInputs.texCoord3",
                 "FragInputs.color",
+            },
+            VertexShaderSlots = new List<int>()
+            {
+                HDLitMasterNode.PositionSlotId
             },
             UseInPreview = false
         };

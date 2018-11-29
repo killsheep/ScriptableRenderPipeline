@@ -238,8 +238,6 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
 
             OnGeneratePassImpl = (IMasterNode node, ref Pass pass) =>
             {
-                var masterNode = node as FabricMasterNode;
-
                 int stencilWriteMaskMV = (int)HDRenderPipeline.StencilBitMask.ObjectVelocity;
                 int stencilRefMV = (int)HDRenderPipeline.StencilBitMask.ObjectVelocity;
 
