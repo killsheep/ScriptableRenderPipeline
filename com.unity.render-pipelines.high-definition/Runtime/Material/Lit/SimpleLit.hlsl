@@ -329,9 +329,9 @@ void EvaluateLight_EnvIntersection(float3 positionWS, float3 normalWS, EnvLightD
     weight *= lightData.weight;
 }
 
-#define REDEFINE_EVALUATE_COOKIE_DIRECTIONAL
-#define REDEFINE_EVALUATE_COOKIE_PUNCTUAL
-#define REDEFINE_EVALUATE_ENV_INTERSECTION
+#define OVERRIDE_EVALUATE_COOKIE_DIRECTIONAL
+#define OVERRIDE_EVALUATE_COOKIE_PUNCTUAL
+#define OVERRIDE_EVALUATE_ENV_INTERSECTION
 
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/LightEvaluation.hlsl"
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/MaterialEvaluation.hlsl"

@@ -4,7 +4,7 @@
 // Directional Light evaluation helper
 //-----------------------------------------------------------------------------
 
-#ifndef REDEFINE_EVALUATE_COOKIE_DIRECTIONAL
+#ifndef OVERRIDE_EVALUATE_COOKIE_DIRECTIONAL
 float3 EvaluateCookie_Directional(LightLoopContext lightLoopContext, DirectionalLightData light,
                                   float3 lightToSample)
 {
@@ -168,7 +168,7 @@ void GetPunctualLightVectors(float3 positionWS, LightData light, out float3 L, o
     }
 }
 
-#ifndef REDEFINE_EVALUATE_COOKIE_PUNCTUAL
+#ifndef OVERRIDE_EVALUATE_COOKIE_PUNCTUAL
 float4 EvaluateCookie_Punctual(LightLoopContext lightLoopContext, LightData light,
                                float3 lightToSample)
 {
@@ -280,7 +280,7 @@ void EvaluateLight_Punctual(LightLoopContext lightLoopContext, PositionInputs po
     attenuation *= shadow;
 }
 
-#ifndef REDEFINE_EVALUATE_ENV_INTERSECTION
+#ifndef OVERRIDE_EVALUATE_ENV_INTERSECTION
 // Environment map share function
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/Reflection/VolumeProjection.hlsl"
 
