@@ -8,11 +8,21 @@ using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.Experimental.Rendering.HDPipeline;
 
+<<<<<<< HEAD
+
 namespace UnityEditor.ShaderGraph
 {
     [Serializable]
-    [Title("Master", "Lit")]
+    [Title("Master", "HDLit")]
     public class HDLitMasterNode : MasterNode<IHDLitSubShader>, IMayRequirePosition, IMayRequireNormal, IMayRequireTangent
+=======
+namespace UnityEditor.Experimental.Rendering.HDPipeline
+{
+    [Serializable]
+    [Title("Master", "Lit")]
+    [FormerName("UnityEditor.ShaderGraph.HDLitMasterNode")]
+    class HDLitMasterNode : MasterNode<IHDLitSubShader>, IMayRequirePosition, IMayRequireNormal, IMayRequireTangent
+>>>>>>> 1cca5899d2... Fix and cleanup pass on HDRP master node (Unlit, Fabric, lit, stacklit, PBR) (#2516)
     {
         public const string AlbedoSlotName = "Albedo";
         public const string AlbedoDisplaySlotName = "BaseColor";
